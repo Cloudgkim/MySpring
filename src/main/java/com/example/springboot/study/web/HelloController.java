@@ -46,16 +46,38 @@ A002 RESTful API
 
  */
 
+import com.example.springboot.study.web.dto.HelloResponseDto;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
 
-    @GetMapping("hello")
+    @GetMapping("/hello")
     public String hello()
     {
         return "hello";
+    }
+
+    /*
+    A009
+    REST:  /hello/dto 사용할 수 있도록 설정
+    @RequestParam
+        외부 API에서 넘어오는 파라미터를 가져오는 annotation
+        즉 파라미터로 name, age가 넘어온다는 말이니까
+        /hello/dto?name=홍길동&age=12 이렇게 하겠다는 의미
+        /hello/dto/?name=홍길동&age=12 이것도 동일한 표현
+
+     TODO:
+        단위테스트
+        HelloControllerTest.java 에가 가서 단위테스트 코드를 추가한다.
+     */
+    @GetMapping("/hello/dto")
+    public HelloResponseDto helloDto( @RequestParam("name") String name,
+                                      @RequestParam("age") int age)
+    {
+        return new HelloResponseDto(name, age);
     }
 
     @GetMapping("test")

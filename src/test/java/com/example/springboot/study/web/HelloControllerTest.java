@@ -8,9 +8,11 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 //아래의 import 3개는 직접 작성
+
+
+import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /* A003
  자동임포트 : Alt + Enter
@@ -41,4 +43,35 @@ public class HelloControllerTest {
                 .andExpect(status().isOk()) // 200 OK
                 .andExpect(content().string(hello));
     }
+
+    /*
+    A010 dto 단위테스트
+        param() : API 테스트를 할 때 사용된 요청 파라미터 설정
+        단 String만 허용되기 때문에 int age String.valueOf(age)처럼 사용해야만 한다.
+
+        jsonPath()
+            JSON 응답값을 필드별로 검증하는 메소드
+            $단위로 변수를 구분해주고 앞에 Dot(.)을 써준다. $.name 처럼 사용하는 것이 사용법
+
+       단위테스트가 끝나면... 실제 프로그램으로 확인
+        Application으로 가서 실행해야 한다.
+        http://localhost:8080/hello/dto?name=이순신&name=34
+
+     */
+    @Test
+    public void helloDtoTest() throws Exception {
+        String name = "Hong Kil Dong";
+        int age = 34;
+
+        mvc.perform(
+                        get("/hello/dto")
+                            .param("name", name)
+                            .param("age", String.valueOf(age)
+                        )
+                    )
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name", is(name)))
+                .andExpect(jsonPath("$.age", is(age)));
+    }
+
 }
