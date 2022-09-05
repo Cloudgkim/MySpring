@@ -35,6 +35,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
             File > Settings > Build, Executing, Depl... > Complier > Annotation Processors >
                 Enable annotation processing 체크
 
+     PHP
+        http://test.com/main.php?id=test
+        http://test.com/api/show/21
+
  */
 @SpringBootApplication
 public class Application {

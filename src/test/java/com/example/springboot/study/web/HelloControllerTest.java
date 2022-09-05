@@ -55,7 +55,7 @@ public class HelloControllerTest {
 
        단위테스트가 끝나면... 실제 프로그램으로 확인
         Application으로 가서 실행해야 한다.
-        http://localhost:8080/hello/dto?name=이순신&name=34
+        http://localhost:8080/hello/dto?name=이순신&age=34
 
      */
     @Test
@@ -66,7 +66,7 @@ public class HelloControllerTest {
         mvc.perform(
                         get("/hello/dto")
                             .param("name", name)
-                            .param("age", String.valueOf(age)
+                            .param("age", String.valueOf(age)  // ""+age
                         )
                     )
                 .andExpect(status().isOk())

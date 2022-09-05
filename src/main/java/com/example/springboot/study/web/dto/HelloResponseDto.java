@@ -19,4 +19,20 @@ import lombok.RequiredArgsConstructor;
 public class HelloResponseDto {
     private final String name;
     private final int age;
+
+
+    /*
+    public HelloResponseDto()
+    {
+
+    }
+
+    public HelloResponseDto(String name, int age)
+    {
+        this.name = name;
+        this.age = age;
+    }
+
+    HelloResponseDto dto = new HelloResponseDto("Hello", 12);
+     */
 }

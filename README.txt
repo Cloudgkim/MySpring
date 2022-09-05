@@ -6,7 +6,7 @@ GitHub 변경 테스트 커밋
 
 A001 : Application.java
 A002 : HelloController.java
-A003 : src/HelloControllerTest.java
+A003 : test/HelloControllerTest.java
 A004 : main/Application.java 실행
 A005 : build.gradle에 롬복 추가
 A006 : main/ web/dto/HelloResponseDto.java
@@ -15,6 +15,24 @@ A008 : build.grale에 롬복 상세 설정
 A009 : HelloController.java
 A010 : HelloControllerTest.java
 A011 : build.gradle 에 JPA사용하겠다고 설정
+A012 : domain.posts.Posts.java
+
+
+H2DB
+    spring boot에서 제공하는 Built-in database
+        별도의 설치가 필요없다.
+        데이터베이스로 H2DB를 사용하겠다고 선언
+    in-memory DB  ---------- Memory, 일상적인 배포용으로는 적합하지 않다.
+                             개발용으로 매우 적합
+
+    RDBMS         --------- File System
+        Oracle
+            + MySql
+            + MariaDB
+                + SQLite : SQL Light
+            + MSSql
+    Memory DB
+
 
 JPA  : Java Persistence API : 자바 지속성 API
 기존 MyBatis에서 SQL Mapper를 이용해서 DB쿼리를 작성하고는 했다.
