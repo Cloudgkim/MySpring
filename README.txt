@@ -14,3 +14,115 @@ A007 : src/ web/dto/HelloResponseDtoTest.java
 A008 : build.grale에 롬복 상세 설정
 A009 : HelloController.java
 A010 : HelloControllerTest.java
+A011 : build.gradle 에 JPA사용하겠다고 설정
+
+JPA  : Java Persistence API : 자바 지속성 API
+기존 MyBatis에서 SQL Mapper를 이용해서 DB쿼리를 작성하고는 했다.
+--> 프로그램의 대부분이 SQL 작업하는 것이 일의 대부분
+    SQL 처리하는 코드 작성하는 시간이 증가하는 문제
+    객체지향적으로 처리할 수 있는 방법이 없을까?
+
+    ORM(Object Relational Mapping)기술이 나왔는데,
+    대표적인 것이 JPA이다.
+    JPA는 표준 자바 ORM(프로그램 - JPA - DB의 인터페이스 역할)
+    ORM은 객체를 매핑하고 SQL Mapper는 쿼리를 매핑
+    SQL에 따른 종속성에서 벗어나겠다.
+
+    JPA를 사용한다 = Java Collection에서 데이터를 넣었다 빼게 만들겠다.
+    CRUD (Create, Read, Update, Delete)
+        저장 : jpa.persit(객체)
+        조회 : Member member = jpa.find(키)
+        수정 : member.setName("변경할이름");
+                String name ==> getName(), setName()
+        삭제 : jpa.remove(member)
+
+    장점 : 유지보수가 간단하다.
+            객체가 변경되면, 알아서 DB에 Update Query수행해준다.
+            기존 : 필드명이 변경되면 모든 SQL 수정
+
+조회
++-----------------------------+
+|  Java Application           |
+|                             |
+|     +------------------+    |
+|     | JPA              |    |
+|     | +--------------+ |    |            +---------+
+|     | |  JDBC        + +----+---SQL--->  |   DB    |
+|     | |  API         + +<---+---Ret----  |         |
+|     | +--------------+ |    |            +---------+
+|     +------------------+    |
++-----------------------------+
+
+
+저장
++---------------------------------------------+
+|                                             |
+|   +-----------+              +------------+ |
+|   |           |   (Entity)   | JPA        | |
+|   |   Member  | --Persist -->|  +-------+ | |
+|   |   DAO     |              |  | JDBC  | + +---(insert SQL) ---> DB
+|   |           |              |  +-------+ | |
+|   +-----------+              +------------+ |
+|                                             |
++---------------------------------------------+
+
+저장
++---------------------------------------------+
+|                                             |
+|   +-----------+              +------------+ |
+|   |           |              | JPA        | |
+|   |   Member  |--find(id)--->|  +-------+ | |                     +------+
+|   |   DAO     |              |  | JDBC  | + +---(insert SQL) ---> |  DB  |
+|   |           |    (entity)  |  | API   | | |<------ Ret -------- |      |
+|   |           |<-- (object) -|  +-------+ | |                     +------+
+|   +-----------+              +------------+ |
+|                                             |
++---------------------------------------------+
+
+
+
+
+JSON : JavaScript Object Notation
+
+{
+    "name": "홍길동",
+    "age" : 12,
+}
+
+{   "name": "홍길동",  "age" : 12, }
+
+{
+    "name": "홍길동",
+    "age" : 12,
+    "company" : {
+        "name" : "임픽스",
+        "http" : "http://impix.co.kr",
+        "address" : "서울",
+    },
+}
+
+{
+    "employee" : {
+        "name" : "홍길동",
+        "age" : 12,
+     },
+    "company" : {
+        "name" : "임픽스",
+        "http" : "http://impix.co.kr",
+        "address" : "서울",
+    },
+}
+
+{
+    "employee" : [
+        { "name": "홍길동", "age":12, "home":"서울",},
+        { "name": "이순신", "age":22, "home":"경남",},
+        { "name": "강감찬", "age":32, "home":"강원",},
+        { "name": "광개토", "age":42, "home":"서울",},
+    ],
+    "company" : {
+        "name" : "임픽스",
+        "http" : "http://impix.co.kr",
+        "address" : "서울",
+    },
+}

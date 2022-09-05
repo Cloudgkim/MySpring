@@ -29,6 +29,10 @@ dependencies {
     testImplementation('org.projectlombok:lombok:')
     testAnnotationProcessor('org.projectlombok:lombok:')
 
+    // A011 : Set JPA  ==> Sync
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation('com.h2database:h2')
+
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
 
