@@ -16,6 +16,8 @@ A009 : HelloController.java
 A010 : HelloControllerTest.java
 A011 : build.gradle 에 JPA사용하겠다고 설정
 A012 : domain.posts.Posts.java
+A013 : domain.posts.PostsRepository.java interface를 만든다.
+A014 : test/ domain.posts.PostsRepositoryTest.java
 
 
 H2DB
