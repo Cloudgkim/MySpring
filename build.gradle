@@ -21,6 +21,9 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('org.springframework.boot:spring-boot-starter-mustache')
 
+    // A005 lombok 추가 ==> Sync
+    implementation('org.projectlombok:lombok:')
+
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
 

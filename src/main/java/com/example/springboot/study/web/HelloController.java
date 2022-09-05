@@ -22,7 +22,28 @@ A002 RESTful API
         PUT
 
     @RestController
-        JSON(JavaScript Object Notation)로 반환하는 컨트롤로 만들때
+        JSON(JavaScript Object Notation)로 반환하는 컨트롤러 만들때
+
+    HTTP Response Code
+    1xx : Trying
+            ---------------> 100
+            <--------------- 180 Ringing
+    2xx : OK
+    3xx : Redirect Error, Temporary Error
+    4xx : Permanent Error, Client Error
+        404 Not Found, 403 Forbidden, 405 Method Not Allowed
+    5xx : Server Error
+        Gateway Error
+    6xx : Global Error
+
+    Spring Boot 장점
+        1. Class, DB 매핑
+        2. Database 변경할 때 포팅이 편하다.
+        3. 단위테스트 @Test를 사용
+
+            HelloController.java
+            HelloControllerTest.java
+
  */
 
 import org.springframework.web.bind.annotation.GetMapping;

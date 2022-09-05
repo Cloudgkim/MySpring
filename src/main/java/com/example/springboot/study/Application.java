@@ -18,6 +18,23 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
         File - Settins - Editor - General - Code Completion -> Match Case 해제
 
+   A004
+    전체 프로그램을 한번 실행해보기
+
+        웹서버가 동작 하고 확인을 위해
+        http://localhost:8080/hello
+        했을 때, 화면에 hello가 나와야 정상
+
+    Class와 DB를 매핑시켜준다.
+        Class - Getter, Setter를 자동으로 처리해 주는 라이브러리를 설치 : Lombok
+        롬복
+            Getter, Setter, Default Constructor, toString() 등을 Annotaion으로 자동 생성
+
+            Ctrl-Shift-A => plugins에서 롬복 확인
+
+            File > Settings > Build, Executing, Depl... > Complier > Annotation Processors >
+                Enable annotation processing 체크
+
  */
 @SpringBootApplication
 public class Application {
