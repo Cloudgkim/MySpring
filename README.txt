@@ -20,6 +20,9 @@ A013 : domain.posts.PostsRepository.java interface를 만든다.
 A014 : test/ domain.posts.PostsRepositoryTest.java
 A015 : resources/application.properties 을 생성해서 로그를 남긴다.
 
+
+    프로그램 개발 순서 : DTO -> Service -> Controller
+
 B001 : web.dto.PostsSaveRequestDto.java
 B002 : web.PostsApiController.java 이것을 먼저 만드는 것은 바람직하지 않음을 확인하기 위한 용도
 B003 : study.service.posts.PostsService.java
@@ -38,6 +41,31 @@ B013 : domain.BaseTimeEntity.java 추상클래스
 B014 : Posts.java 가 BaseTimeEntity클래스를 상속받도록 기능 추가
 B015 : Application.java에 Auditing을 알려준다.(어노테이션으로)
 B016 : PostsRepositoryTest.java 에서 Auditing을 단위 테스트
+Mustache를 위해 확인(설정)
+    File > Setting > Editor > Code Style > File Types > Handlebars/Mustache > File Name Patters에
+    *.mustache 이 등록되어 있어야 한다.
+B017 : study.web.IndexController.java
+B018 : IndexControllerTest.java 단위테스트
+B019 : src/main/resources/templates/index.mustache
+
+
+Mustache : 매우 간단한 템플릿 엔진
+    ReAct 화면 틀을 미리 만들어 놓고, 특정 영역에 데이터베이스 정보를 출력
+    자바 : 서버 템플릿 엔진을 사용
+    JS : 클라이언트 템플릿 엔진
+
+    장점 : 문법이 매우 단순 View 역할만 수행
+        즉, 화면에 출력하는 부분만 담당
+        IntelliJ에서는 plugin을 설치 간단
+
+        Ctrl-Shift-A : 검색어 plugins
+            mustache 검색해서 install한다.
+
+            gradle.build에 추가해야하는데, 우리는 이미 추가해 놓았다.
+
+    BootStrap
+        w3schools.com
+
 
 게시판
     id, title, content, author, 글쓴 시간, 글 최종 수정시간, 비밀번호, 사용자id, .....
