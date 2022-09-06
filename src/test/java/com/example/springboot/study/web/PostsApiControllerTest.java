@@ -86,6 +86,10 @@ public class PostsApiControllerTest {
     /*
     B011 수정하기를 단위 테스트
         http://localhost:8080/api/v1/posts/3
+
+        단위테스트가 통과되면, DB를 확인할 수 없어서 불편한 점을 해결
+        GUI형태된 SQL 브라우저를 실행해서 눈으로 보면서 테스트
+        이를 위해서는 application.properties 파일에 설정
      */
 
     @Test
