@@ -25,6 +25,10 @@ B002 : web.PostsApiController.java 이것을 먼저 만드는 것은 바람직�
 B003 : study.service.posts.PostsService.java
 B004 : web.PostsApiController.java PostsService에 DTO를 이용해 저장 명령 수행
 B005 : test/web.PostsApiControllerTest.java에서 단위테스트
+B006 : PostsUpdateRequestDto.java 수정하기 DTO
+B007 : PostsResponseDto.java 응답을 위한 DTO
+B008 : Posts.java에 update()메소드 추가
+B009 : PostsService.java 에 update() 추가
 
 
 H2DB
