@@ -21,6 +21,7 @@ B005 저장하는 컨트롤러 단위테스트
 import com.example.springboot.study.domain.posts.Posts;
 import com.example.springboot.study.domain.posts.PostsRepository;
 import com.example.springboot.study.web.dto.PostsSaveRequestDto;
+import com.example.springboot.study.web.dto.PostsUpdateRequestDto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,6 +29,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -57,15 +60,15 @@ public class PostsApiControllerTest {
     public void postsSaveTest() throws Exception {
 
         // testtitle, testcontent, testauthor
-        String title = "save test title";
-        String content = "save test content";
+        String title = "testTitle";
+        String content = "testContent";
 
 
         PostsSaveRequestDto requestDto = PostsSaveRequestDto
                                             .builder()
                                                 .title(title)
                                                 .content(content)
-                                                .author("HongKilDong")
+                                                .author("testAuthor")
                                             .build();
 
         // http://localhost:8080/api/v1/posts
@@ -79,4 +82,45 @@ public class PostsApiControllerTest {
         assertThat(list.get(0).getTitle()).isEqualTo(title);
         assertThat(list.get(0).getContent()).isEqualTo(content);
     }
+
+    /*
+    B011 수정하기를 단위 테스트
+        http://localhost:8080/api/v1/posts/3
+     */
+
+    @Test
+    public void postsUpdateTest() throws Exception
+    {
+        Posts savePosts = postsRepository.save(
+                Posts.builder()
+                        .title("testTitle")
+                        .content("testContent")
+                        .author("testAuthor")
+                        .build()
+        );
+
+        Long updateId = savePosts.getId();
+        String expectedTitle = "testTitleUpdate";
+        String expectedContent = "testContentUpdate";
+
+        PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder()
+                .title(expectedTitle)
+                .content(expectedContent)
+                .build();
+
+        String url = "http://localhost:" + port + "/api/v1/posts/" + updateId;
+        HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
+
+        ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Long.class);
+
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(responseEntity.getBody()).isGreaterThan(0L);
+
+        List<Posts> list = postsRepository.findAll();
+        assertThat(list.get(0).getTitle()).isEqualTo(expectedTitle);
+        assertThat(list.get(0).getContent()).isEqualTo(expectedContent);
+
+    }
+
+
 }
