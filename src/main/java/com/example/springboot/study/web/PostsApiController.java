@@ -17,10 +17,29 @@ B002 컨트롤러를 먼저 만들면 어떻게 되는지 확인
    study.service.posts.PostsService.java
  */
 
+import com.example.springboot.study.service.posts.PostsService;
+import com.example.springboot.study.web.dto.PostsSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
+/*
+    B004
+        서버스에 RequestDTO를 파라미터로 해서 Serive에 저장 명령 수행
+
+        스프링부트는 메소드를 구분해서 사용하는 것이 일반적이다.
+        GET     : 데이터 요청,   GET
+        POST    : 저장하라..,   POST
+        PUT     : 수정    ,    POST
+        DELETE  : 삭제 ,       GET
+
+       현재까지는 논리적으로 저장이 되는 것을 코딩 => 확인
+       단위테스트를 통해서 확인할 수 있다.
+       PostsApiController를 테스트할 것이니까
+       PostsApiControllerTest.java를 만들어서 단위테스트 하자.
+ */
 @RequiredArgsConstructor
 @RestController
 public class PostsApiController {
@@ -29,8 +48,8 @@ public class PostsApiController {
     // localhost:8080/api/v1/posts
 
     @PostMapping("/api/v1/posts")
-    public Long save()
+    public Long save(@RequestBody PostsSaveRequestDto requestDto)
     {
-        return 0L;
+        return postsService.save(requestDto);
     }
 }
