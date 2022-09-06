@@ -29,6 +29,8 @@ B006 : PostsUpdateRequestDto.java 수정하기 DTO
 B007 : PostsResponseDto.java 응답을 위한 DTO
 B008 : Posts.java에 update()메소드 추가
 B009 : PostsService.java 에 update() 추가
+B010 : PostsApiController.java 에 수정하기 Mapping 추가
+B011 : PostsApiControllerTest.java에서 단위테스트
 
 
 H2DB
