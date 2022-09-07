@@ -54,6 +54,11 @@ C003 : IndexController.java 에 /posts/save를 등록
 C004 : /resources/static/css/style.css
 C005 : /resources/static/js/index.js
 C006 : footer.mustache : index.js파일을 실행
+    글쓰기 성공하면 http://localhost:8080/h2-console 에 접속해 데이터 확인
+C007 : index.mustache 에 글 목록을 보여주겠습니다.
+C008 : posts.PostsRepository.java : 목록에 보여줄 posts 객체를 만들어야 한다.
+C009 : dto.PostsListResponseDto.java 리스트 객체를 전송하는 Dto만든다.
+C010 : PostsService.java에서 posts 객체를 만들어서 보낸다.
 
 Mustache : 매우 간단한 템플릿 엔진
     ReAct 화면 틀을 미리 만들어 놓고, 특정 영역에 데이터베이스 정보를 출력
