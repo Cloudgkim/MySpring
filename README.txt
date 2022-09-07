@@ -59,6 +59,120 @@ C007 : index.mustache 에 글 목록을 보여주겠습니다.
 C008 : posts.PostsRepository.java : 목록에 보여줄 posts 객체를 만들어야 한다.
 C009 : dto.PostsListResponseDto.java 리스트 객체를 전송하는 Dto만든다.
 C010 : PostsService.java에서 posts 객체를 만들어서 보낸다.
+C011 : IndexController.java : Service에서 전달한 DTO를 가져온 결과를 posts로 index.mustache에 전달하는 코드
+C012 : index.mustcach 파일에서 제목에다 링크를 만들고 내용보기를 만들어야 한다.
+
+
+Mustache 간단한 문법 정리
+{{! comment }}
+
+1. 변수 :  {{ 변수이름 }}
+
+{
+    "name": "홍길동",
+    "age": 12,
+    "title": "<table>",
+}
+
+{{ name }} -> {{! 홍길동 }}
+{{ age }} -> {{! 12 }}
+{{ company }} -> {{! none }}
+{{ title }} --> &lt;table&gt;
+{{{ title }}} --> <table>  태그를 그대로 써준다.
+
+
+{
+    "name": "홍길동",
+    "age" : 12,
+    "company" : {
+        "name" : "임픽스",
+        "http" : "http://impix.co.kr",
+        "address" : "서울",
+    },
+}
+
+{{ name }} : 홍길동
+{{ age }}  : 12
+{{ company.name }} : 임픽스
+{{ company.http }} : http://impix.co.kr
+{{ company }}
+
+2. Section : 조건문, 반복문
+
+    {{ #변수명 }}
+    {{ #posts }}
+
+    2-1 조건문
+
+    {
+        "name" : "홍길동"
+    }
+
+    {{#name}}
+        이 사람의 이름은 {{name}}
+    {{/name}}
+    {{^name}}
+        사람 정보가 없습니다.
+    {{/name}}
+
+    {
+        "person": {
+            "name":"홍길동",
+            "age":12,
+        },
+        "company": {
+            "name":"임픽스"
+        }
+    }
+
+    {{#person}}
+        {{name}}의 회사명은 {{company.name}}입니다.
+    {{/person}}
+
+    2-2 반복문
+
+    {
+        "member": [
+            { "name":"홍길동", "age":12 },
+            { "name":"이순신", "age":34 },
+            { "name":"광개토", "age":56 }
+        ]
+    }
+
+    {{#member}}
+        {{name}}
+    {{/member}}
+
+    2-3 반전 섹션 : not ^
+    {
+        "member": [ ]
+    }
+
+    {{#member}}
+        {{name}}
+    {{/member}}
+    {{^member}}
+        사람이 없네.
+    {{/member}}
+
+3. 부분 템플릿 : Partial Template 기호 : >  , include
+    Java: import
+    C, PHP : include
+
+    {{>layout/header}}
+
+    {{#name}}
+        {{>user}}
+    {{/name}}
+
+4. 구분자 : {{ , }}
+    일반적으로 사용할 때,  {{variablename}}
+
+    JSP: <%  %>
+    PHP : <? ?>
+
+    {{=<%   %>=}}
+
 
 Mustache : 매우 간단한 템플릿 엔진
     ReAct 화면 틀을 미리 만들어 놓고, 특정 영역에 데이터베이스 정보를 출력
