@@ -49,8 +49,11 @@ B018 : IndexControllerTest.java 단위테스트
 B019 : src/main/resources/templates/index.mustache
 
 C001 : index.mustache : 글쓰기 버튼
-C002 : layout/posts-save.mustache  글쓰기 화면을 위한 HTML 페이지(Mustache Page)
-
+C002 : posts-save.mustache  글쓰기 화면을 위한 HTML 페이지(Mustache Page)
+C003 : IndexController.java 에 /posts/save를 등록
+C004 : /resources/static/css/style.css
+C005 : /resources/static/js/index.js
+C006 : footer.mustache : index.js파일을 실행
 
 Mustache : 매우 간단한 템플릿 엔진
     ReAct 화면 틀을 미리 만들어 놓고, 특정 영역에 데이터베이스 정보를 출력

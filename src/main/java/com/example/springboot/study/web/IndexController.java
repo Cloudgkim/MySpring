@@ -20,4 +20,12 @@ public class IndexController {
     public String index() {
         return "index";
     }
+
+    /*
+    C003
+     */
+    @GetMapping("/posts/save")
+    public String postsSave() {
+        return "posts-save";
+    }
 }
