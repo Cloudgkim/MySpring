@@ -8,6 +8,12 @@ var main = {
             _this.save();
         });
 
+        // C017 Update
+        $('#btn-update').on('click', function(){
+           _this.update();
+        });
+
+
     },
 
     save: function() {
@@ -40,6 +46,33 @@ var main = {
         })
         .fail(function(error){
             alert('글쓰기 에러입니다.');
+            alert(JSON.stringify(error));
+        })
+    },
+    // C017 계속  /api/v1/posts/1
+    // 주의 : 함수들이 콤마(,)로 나열되어야 한다.
+    // 처리가 끝나면, 수정하기 화면을 뿌려주는 IndexController를 처리
+    update: function(){
+        var data = {
+            title: $('#title').val(),
+            content: $('#content').val()
+        };
+
+        var id = $('#id').val();
+
+        $.ajax({
+            type: 'PUT',
+            url: '/api/v1/posts/'+id,
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(data)
+        })
+        .done(function(){
+            alert('글이 변경되었습니다.');
+            location.href='/';
+        })
+        .fail(function(error){
+            alert('글수정 에러입니다.');
             alert(JSON.stringify(error));
         })
     }

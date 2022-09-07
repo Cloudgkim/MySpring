@@ -61,7 +61,12 @@ C009 : dto.PostsListResponseDto.java 리스트 객체를 전송하는 Dto만든�
 C010 : PostsService.java에서 posts 객체를 만들어서 보낸다.
 C011 : IndexController.java : Service에서 전달한 DTO를 가져온 결과를 posts로 index.mustache에 전달하는 코드
 C012 : index.mustcach 파일에서 제목에다 링크를 만들고 내용보기를 만들어야 한다.
-
+C013 : IndexController.java : /posts/show/1 처리를 해준다.
+C014 : posts-show.mustache : 글 내용보기하는 페이지를 만들어준다.
+C015 : posts-show.mustache : 수정버튼에 이동할 페이지 작성
+C016 : posts-update.mustache : 페이지를 만드는데, posts-save.mustache와 거의 같다. ( posts/update)
+C017 : index.js : 실제 수정처리를 한다.
+C018 : IndexController.java : 글 수정하기 화면을 구성하는 처리
 
 Mustache 간단한 문법 정리
 {{! comment }}
